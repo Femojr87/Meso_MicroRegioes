@@ -1,0 +1,12 @@
+import pandas as pd
+ColunasMeso = ['Mesoregiões','Microrregião']
+ColunasMicro = ['Microrregião','Municípios']
+
+GO = pd.read_html('https://pt.wikipedia.org/wiki/Lista_de_mesorregi%C3%B5es_e_microrregi%C3%B5es_de_Goi%C3%A1s')
+MesoGO = GO[0][['Mesorregião[1][2]','Microrregiões']]
+
+MicroGO = pd.concat([GO[1],GO[2],GO[3],GO[4],GO[5]], ignore_index=True)[['Microrregião[1][2]','Municípios']]
+
+
+MesoGO.columns = ['Mesoregiões','Microrregião']
+MicroGO.columns = ['Microrregião','Municípios']
